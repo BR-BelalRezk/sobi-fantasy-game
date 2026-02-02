@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import { cn } from "@/utils";
 
 export const metadata: Metadata = {
   title: "SOBI Fantasy Game",
@@ -13,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>{children}</body>
+      <body className={cn("antialiased")}>{children}</body>
     </html>
   );
 }
