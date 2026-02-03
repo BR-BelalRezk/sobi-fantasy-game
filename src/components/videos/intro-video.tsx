@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { introVideo } from "@/assets";
 
 export default function IntroVideo({
   children,
@@ -24,7 +23,7 @@ export default function IntroVideo({
             transition={{ duration: 0.8, ease: "easeInOut" }}
           >
             <video
-              src={introVideo}
+              src={"/videos/intro.mp4"}
               autoPlay
               muted={false}
               playsInline
