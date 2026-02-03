@@ -24,7 +24,6 @@ export default function AdminIntroSequence({
             onEnd={() => setStep("preparing")}
           />
         )}
-
         {step === "preparing" && (
           <VideoScene
             key="preparing"
