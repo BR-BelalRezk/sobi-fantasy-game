@@ -1,3 +1,5 @@
+import AdminIntroSequence from "@/components/videos/admin-intro-sequence";
+
 export default function Admin() {
-  return <div>Admin</div>;
+  return <AdminIntroSequence />;
 }
