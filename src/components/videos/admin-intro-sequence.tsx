@@ -9,7 +9,6 @@ type Step = "welcome" | "preparing" | "done";
 interface AdminIntroSequenceProps {
   onFinish?: () => void;
 }
-
 export default function AdminIntroSequence({
   onFinish,
 }: AdminIntroSequenceProps) {
