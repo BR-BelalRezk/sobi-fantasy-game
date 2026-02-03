@@ -17,10 +17,6 @@ export default function IntroVideo({
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [phase, setPhase] = useState<Phase>("loading");
   const [userUnmuted, setUserUnmuted] = useState(false);
-
-  /**
-   * Start playback muted after first paint
-   */
   useEffect(() => {
     if (phase !== "loading") return;
 
