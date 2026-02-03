@@ -7,52 +7,46 @@ interface VideoSceneProps {
   src: string;
   onEnd: () => void;
 }
+
 export function VideoScene({ src, onEnd }: VideoSceneProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [ready, setReady] = useState(false);
+  const [userUnmuted, setUserUnmuted] = useState(false);
 
+  // Autoplay muted when ready
   useEffect(() => {
     if (!ready) return;
 
     const video = videoRef.current;
     if (!video) return;
 
-    video.muted = true;
-
-    requestAnimationFrame(() => {
-      video.play().catch(() => {
-        // autoplay blocked → skip safely
-        onEnd();
-      });
-    });
+    video.muted = true; // autoplay muted to satisfy browser
+    video.play().catch(() => onEnd()); // if blocked, skip safely
   }, [ready, onEnd]);
+
+  // Add click listener to unmute
+  useEffect(() => {
+    if (userUnmuted) return;
+
+    const handleClick = () => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      video.muted = false;
+      setUserUnmuted(true);
+    };
+
+    document.addEventListener("click", handleClick, { once: true });
+    return () => document.removeEventListener("click", handleClick);
+  }, [userUnmuted]);
 
   return (
     <motion.div
-      className="fixed inset-0 z-20"
-      initial={{
-        opacity: 0,
-        scale: 1.06,
-        filter: "blur(16px)",
-      }}
-      animate={
-        ready
-          ? {
-              opacity: 1,
-              scale: 1,
-              filter: "blur(0px)",
-            }
-          : {}
-      }
-      exit={{
-        opacity: 0,
-        scale: 0.94,
-        filter: "blur(12px)",
-      }}
-      transition={{
-        duration: 0.6,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      className="fixed inset-0 z-20 cursor-pointer"
+      initial={{ opacity: 0, scale: 1.06, filter: "blur(16px)" }}
+      animate={ready ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
+      exit={{ opacity: 0, scale: 0.94, filter: "blur(12px)" }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       {!ready && (
         <div className="absolute inset-0 z-30 flex items-center justify-center bg-black">
@@ -65,7 +59,7 @@ export function VideoScene({ src, onEnd }: VideoSceneProps) {
         src={src}
         preload="auto"
         playsInline
-        muted={false}
+        muted
         className="w-full h-full object-cover"
         onLoadedData={() => setReady(true)}
         onEnded={onEnd}
