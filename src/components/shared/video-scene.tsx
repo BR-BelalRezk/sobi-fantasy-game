@@ -7,7 +7,6 @@ interface VideoSceneProps {
   src: string;
   onEnd: () => void;
 }
-
 export function VideoScene({ src, onEnd }: VideoSceneProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [ready, setReady] = useState(false);
