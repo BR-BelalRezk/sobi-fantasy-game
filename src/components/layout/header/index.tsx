@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 right-0 z-9999">
       <motion.div
-        className="flex flex-col gap-20"
+        className="flex flex-col items-center"
         initial={{ opacity: 0, filter: "blur(20px)", scale: 0.8 }}
         animate={
           canAppear

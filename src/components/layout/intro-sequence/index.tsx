@@ -46,6 +46,7 @@ export default function IntroSequence({ children }: Props) {
               animate="animate"
               exit="exit"
               transition={{
+                delay: 1,
                 duration: animationDuration,
                 ease: [0.22, 1, 0.36, 1],
               }}
