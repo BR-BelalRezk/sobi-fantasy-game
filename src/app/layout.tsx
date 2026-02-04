@@ -15,6 +15,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "SOBI Fantasy Game",
   description: "SOBI Fantasy Game",
+  icons: {
+    icon: "/icons/Sobi-Logo.webp",
+  },
 };
 
 export default function RootLayout({
