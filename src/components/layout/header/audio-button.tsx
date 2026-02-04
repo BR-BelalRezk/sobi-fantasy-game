@@ -21,7 +21,7 @@ export default function AudioButton() {
   return (
     <button
       onClick={toggleAudio}
-      className="-mt-10 flex items-center space-x-0.5"
+      className="-mt-10 flex items-center space-x-0.5 size-20 justify-center"
     >
       {Array.from({ length: 4 }).map((_, index) => (
         <div
