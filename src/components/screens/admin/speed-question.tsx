@@ -81,7 +81,7 @@ export default function SpeedQuestionScreen() {
             exit="exit"
           >
             <motion.video
-              src="/videos/startSpeedQuestion.mp4"
+              src="/videos/startSpeedQuestions.mp4"
               autoPlay
               playsInline
               className="absolute inset-0 w-full h-full object-cover"
