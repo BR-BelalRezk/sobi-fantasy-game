@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "motion/react";
 import { usePhase } from "@/store/speed-questions";
+import GameButton from "@/components/shared/game-button";
 
 export default function SpeedQuestionScreen() {
   const { speedQuestionPhase, setSpeedQuestionPhase } = usePhase();
@@ -12,12 +13,6 @@ export default function SpeedQuestionScreen() {
     initial: { opacity: 0, scale: 1.05, filter: "blur(20px)" },
     animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
     exit: { opacity: 0, scale: 0.95, filter: "blur(10px)" },
-  };
-
-  const buttonVariants: Variants = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 30 },
   };
 
   const textVariants: Variants = {
@@ -40,8 +35,10 @@ export default function SpeedQuestionScreen() {
           >
             <motion.video
               src="/videos/welcome.mp4"
-              autoPlay
               playsInline
+              autoPlay
+              muted // keep muted so autoplay works
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
               variants={mediaVariants}
               initial="initial"
@@ -52,20 +49,13 @@ export default function SpeedQuestionScreen() {
 
             <AnimatePresence>
               {showButton && (
-                <motion.button
-                  variants={buttonVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="absolute bottom-10 px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition"
+                <GameButton
+                  text="Next"
                   onClick={() => {
                     setSpeedQuestionPhase("beforeSpeedQuestion");
                     setShowButton(false);
                   }}
-                >
-                  Next
-                </motion.button>
+                />
               )}
             </AnimatePresence>
           </motion.div>
@@ -82,8 +72,10 @@ export default function SpeedQuestionScreen() {
           >
             <motion.video
               src="/videos/startSpeedQuestions.mp4"
-              autoPlay
               playsInline
+              autoPlay
+              muted // keep muted so autoplay works
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
               variants={mediaVariants}
               initial="initial"
@@ -95,20 +87,13 @@ export default function SpeedQuestionScreen() {
             <AnimatePresence>
               {showButton && (
                 <>
-                  <motion.button
-                    variants={buttonVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="absolute bottom-10 px-8 py-3 bg-white text-black rounded-lg hover:bg-gray-200 transition"
+                  <GameButton
+                    text="Start Speed Question"
                     onClick={() => {
                       setSpeedQuestionPhase("startSpeedQuestion");
                       setShowButton(false);
                     }}
-                  >
-                    Start Speed Question
-                  </motion.button>
+                  />
 
                   <motion.p
                     variants={textVariants}
@@ -118,7 +103,7 @@ export default function SpeedQuestionScreen() {
                     transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
                     className="absolute bottom-20 text-white text-lg"
                   >
-                    Get ready! The speed questions are coming.
+                    Get ready for the Speed Question.
                   </motion.p>
                 </>
               )}
