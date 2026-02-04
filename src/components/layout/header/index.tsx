@@ -1,7 +1,6 @@
 "use client";
 import { useIntroAnimationSteps } from "@/store/intro-animation-steps";
 import AudioButton from "./audio-button";
-import Logo from "./logo";
 import { motion } from "motion/react";
 
 export default function Header() {
@@ -19,7 +18,6 @@ export default function Header() {
         }
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <Logo />
         <AudioButton />
       </motion.div>
     </header>
