@@ -46,7 +46,7 @@ export default function IntroSequence({ children }: Props) {
                 opacity: 0,
                 scale: 1.25,
                 filter: "blur(20px)",
-                transition: { delay: 1 },
+                transition: { delay: 5 },
               }}
               animate="animate"
               exit="exit"
