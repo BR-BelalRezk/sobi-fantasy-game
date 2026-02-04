@@ -1,4 +1,4 @@
-import IntroSequence from "@/components/shared/intro-sequence";
+import IntroSequence from "@/components/layout/intro-sequence";
 
 export default function GameLayout({
   children,
