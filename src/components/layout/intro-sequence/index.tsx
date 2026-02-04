@@ -42,11 +42,15 @@ export default function IntroSequence({ children }: Props) {
             <motion.figure
               key="sobi-logo"
               variants={mediaVariants}
-              initial="initial"
+              initial={{
+                opacity: 0,
+                scale: 1.25,
+                filter: "blur(20px)",
+                transition: { delay: 1 },
+              }}
               animate="animate"
               exit="exit"
               transition={{
-                delay: 1,
                 duration: animationDuration,
                 ease: [0.22, 1, 0.36, 1],
               }}
