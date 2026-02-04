@@ -103,16 +103,6 @@ export default function SpeedQuestionScreen() {
               <AnimatePresence>
                 {showButton && (
                   <>
-                    {/* Text Container */}
-                    <motion.p
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="text-white text-lg font-medium drop-shadow-md"
-                    >
-                      Get ready for the Speed Question.
-                    </motion.p>
-
                     {/* Button Container */}
                     <div className="pointer-events-auto">
                       <GameButton
@@ -122,6 +112,15 @@ export default function SpeedQuestionScreen() {
                         }
                       />
                     </div>
+                    {/* Text Container */}
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      className="text-white text-lg font-medium drop-shadow-md"
+                    >
+                      Get ready for the Speed Question.
+                    </motion.p>
                   </>
                 )}
               </AnimatePresence>
