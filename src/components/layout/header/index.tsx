@@ -7,9 +7,9 @@ export default function Header() {
   const { introStep } = useIntroAnimationSteps();
   const canAppear = introStep >= 3;
   return (
-    <header className="fixed top-0 right-0 z-9999">
+    <header className="fixed top-5 right-5 z-9999">
       <motion.div
-        className="flex flex-col items-center"
+        className="flex justify-center items-center"
         initial={{ opacity: 0, filter: "blur(20px)", scale: 0.8 }}
         animate={
           canAppear

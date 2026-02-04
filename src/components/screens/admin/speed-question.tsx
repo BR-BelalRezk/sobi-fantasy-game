@@ -54,7 +54,6 @@ export default function SpeedQuestionScreen() {
               src="/videos/welcome.mp4"
               playsInline
               autoPlay
-              muted
               preload="auto"
               className="absolute inset-0 w-full h-full object-cover z-0"
               variants={mediaVariants}
@@ -93,7 +92,6 @@ export default function SpeedQuestionScreen() {
               src="/videos/startSpeedQuestions.mp4"
               playsInline
               autoPlay
-              muted
               preload="auto"
               className="absolute inset-0 w-full h-full object-cover z-0"
               variants={mediaVariants}
