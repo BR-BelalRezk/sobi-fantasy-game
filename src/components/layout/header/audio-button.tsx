@@ -7,7 +7,7 @@ export default function AudioButton() {
 
   const toggleAudio = () => {
     // Toggle the animation state
-    setActive((prev) => !prev);
+    setActive(true);
 
     // Find all videos in the DOM and unmute them
     const videos = document.querySelectorAll<HTMLVideoElement>("video");
@@ -21,7 +21,7 @@ export default function AudioButton() {
   return (
     <button
       onClick={toggleAudio}
-      className="ml-10 flex items-center space-x-0.5"
+      className="-mt-10 flex items-center space-x-0.5"
     >
       {Array.from({ length: 4 }).map((_, index) => (
         <div
