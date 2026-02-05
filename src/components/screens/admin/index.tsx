@@ -7,15 +7,27 @@ import BeforeSpeedQuestion from "./before-speed-question";
 
 export default function Admin() {
   const { phase } = useGamePhases();
+
   return (
-    <motion.div>
+    <div className="w-full h-screen bg-black">
       <AnimatePresence mode="wait">
-        {phase === "welcome" && <Welcome />}
-        {phase === "beforeSpeedQuestion" && <BeforeSpeedQuestion />}
+        {phase === "welcome" && <Welcome key="welcome" />}
+        {phase === "beforeSpeedQuestion" && (
+          <BeforeSpeedQuestion key="beforeSpeedQuestion" />
+        )}
         {phase === "startSpeedQuestion" && (
-          <p className="text-white text-center">startSpeedQuestion</p>
+          <motion.div
+            key="startSpeedQuestion"
+            className="w-full h-screen bg-black flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
+            startSpeedQuestion
+          </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
