@@ -9,7 +9,7 @@ export default function Welcome() {
   return (
     <motion.section
       key="welcome-phase"
-      className="fixed inset-0 bg-black flex items-center justify-center"
+      className="w-full h-screen bg-black flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -18,7 +18,7 @@ export default function Welcome() {
       <motion.video
         key="welcome-video"
         src="/videos/welcome.mp4"
-        className="w-full h-full object-cover"
+        className="size-full object-cover"
         autoPlay
         playsInline
         muted
