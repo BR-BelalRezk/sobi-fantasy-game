@@ -2,8 +2,8 @@
 
 import { AnimatePresence } from "motion/react";
 import Initialize from "./initialize";
-import { useGamePhases } from "@/components/contexts/game-phases";
 import StartExperience from "./start-experience";
+import { useGamePhases } from "@/components/contexts/game-phases";
 
 export default function IntroSequence({
   children,
@@ -11,13 +11,14 @@ export default function IntroSequence({
   children: React.ReactNode;
 }) {
   const { phase } = useGamePhases();
-  const showChildren = phase !== "initialize" && phase !== "start experience";
 
   return (
     <AnimatePresence mode="wait">
-      {phase === "initialize" && <Initialize />}
-      {phase === "start experience" && <StartExperience />}
-      {showChildren && children}
+      {phase === "initialize" && <Initialize key="initialize" />}
+      {phase === "start experience" && (
+        <StartExperience key="start-experience" />
+      )}
+      {phase !== "initialize" && phase !== "start experience" && children}
     </AnimatePresence>
   );
 }

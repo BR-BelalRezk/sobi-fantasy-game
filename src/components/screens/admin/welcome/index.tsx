@@ -18,12 +18,14 @@ export default function Welcome() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
     >
+      {/* Fullscreen video */}
       <motion.video
         key="welcome-video"
         src="/videos/welcome.mp4"
         className="w-full h-full object-cover"
         autoPlay
         playsInline
+        muted
         preload="auto"
         initial={{ opacity: 0, scale: 1.05, filter: "blur(16px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
@@ -32,13 +34,22 @@ export default function Welcome() {
         onEnded={() => setVideoEnded(true)}
       />
 
+      {/* Button appears after video */}
       <AnimatePresence mode="wait">
         {videoEnded && (
-          <GameButton
-            text="Start"
-            onClick={() => setPhase("beforeSpeedQuestion")}
-            className="absolute bottom-10 flex flex-col items-center gap-4"
-          />
+          <motion.div
+            key="welcome-button"
+            className="absolute bottom-16 w-full flex justify-center"
+            initial={{ opacity: 0, y: 20, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <GameButton
+              text="Start"
+              onClick={() => setPhase("beforeSpeedQuestion")}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.section>
