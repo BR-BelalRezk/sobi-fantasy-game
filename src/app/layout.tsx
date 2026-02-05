@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable}>
       <body className={cn("antialiased font-sans bg-black")}>
         <Providers>
-          <Header />
+          {/* <Header /> */}
           {children}
         </Providers>
       </body>

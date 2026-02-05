@@ -1,0 +1,81 @@
+"use client";
+
+import { motion } from "motion/react";
+import { useGamePhases } from "@/components/contexts/game-phases";
+import { usePathname } from "next/navigation";
+
+export default function Initialize() {
+  const { setPhase } = useGamePhases();
+  const pathname = usePathname();
+
+  const isAdminPage = pathname === "/game";
+
+  const handleClick = () => {
+    setPhase("start experience");
+  };
+
+  return (
+    <motion.section
+      className="min-h-screen bg-black flex items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+    >
+      {isAdminPage ? (
+        <motion.button
+          initial={{
+            opacity: 0,
+            scale: 0.75,
+            y: 28,
+            filter: "blur(18px)",
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            filter: "blur(0px)",
+          }}
+          exit={{
+            opacity: 0,
+            scale: 0.9,
+            y: -18,
+            filter: "blur(12px)",
+          }}
+          transition={{
+            opacity: { duration: 0.35 },
+            scale: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+            y: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+            filter: { duration: 0.45 },
+          }}
+          whileHover={{
+            scale: 1.04,
+            y: -2,
+            boxShadow:
+              "0 0 0 1px rgba(180,180,180,0.25), 0 18px 40px rgba(0,0,0,0.8)",
+          }}
+          whileTap={{ scale: 0.96, y: 1 }}
+          onClick={handleClick}
+          className="
+            relative px-16 py-5 uppercase tracking-[0.35em]
+            text-[15px] font-medium text-neutral-300 border border-neutral-600
+            bg-black cursor-pointer outline-none
+          "
+        >
+          <span className="pointer-events-none absolute inset-[3px] border border-neutral-700" />
+          <span className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 bg-linear-to-r from-transparent via-white/5 to-transparent" />
+          <span className="relative z-10">Start Experience</span>
+        </motion.button>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, filter: "blur(12px)", y: 20 }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)", y: 0 }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          className="text-neutral-300 text-xl font-medium uppercase tracking-wide"
+        >
+          Waiting for admin to start...
+        </motion.div>
+      )}
+    </motion.section>
+  );
+}

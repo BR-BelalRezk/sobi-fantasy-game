@@ -1,5 +1,5 @@
-import SpeedQuestionScreen from "@/components/screens/admin/speed-question";
+import React from "react";
 
 export default function Admin() {
-  return <SpeedQuestionScreen />;
+  return <div>Admin</div>;
 }

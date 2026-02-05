@@ -1,9 +1,9 @@
 export default async function TeamID({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: ID }>;
 }) {
   const { id } = await params;
   const teamID = id;
-  return <div>TeamID</div>;
+  return <section></section>;
 }

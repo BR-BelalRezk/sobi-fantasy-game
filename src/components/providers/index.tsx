@@ -1,15 +1,14 @@
 "use client";
 
-import IntroAnimationSteps from "@/store/intro-animation-steps";
+import { AnimatePresence } from "motion/react";
+import Contexts from "../contexts";
 import Lenis from "./lenis";
-import { SpeedQuestionsPhases } from "@/store/speed-questions";
-
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <Lenis>
-      <IntroAnimationSteps>
-        <SpeedQuestionsPhases>{children}</SpeedQuestionsPhases>
-      </IntroAnimationSteps>
+      <Contexts>
+        <AnimatePresence mode="wait">{children}</AnimatePresence>
+      </Contexts>
     </Lenis>
   );
 }
