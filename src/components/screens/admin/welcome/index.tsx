@@ -1,15 +1,18 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { useGamePhases } from "@/components/contexts/game-phases";
+import GameButton from "@/components/shared/game-button";
 
 export default function Welcome() {
   const { setPhase } = useGamePhases();
+  const [videoEnded, setVideoEnded] = useState(false);
 
   return (
     <motion.section
       key="welcome-phase"
-      className="w-full h-screen bg-black flex items-center justify-center"
+      className="w-full h-screen bg-black relative flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -18,16 +21,26 @@ export default function Welcome() {
       <motion.video
         key="welcome-video"
         src="/videos/welcome.mp4"
-        className="size-full object-cover"
+        className="w-full h-full object-cover"
         autoPlay
         playsInline
+        muted
         preload="auto"
         initial={{ opacity: 0, scale: 1.05, filter: "blur(16px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
         exit={{ opacity: 0, scale: 0.98, filter: "blur(12px)" }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        onEnded={() => setPhase("beforeSpeedQuestion")}
+        onEnded={() => setVideoEnded(true)}
       />
+
+      <AnimatePresence mode="wait">
+        {videoEnded && (
+          <GameButton
+            text="Start"
+            onClick={() => setPhase("beforeSpeedQuestion")}
+          />
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 }
