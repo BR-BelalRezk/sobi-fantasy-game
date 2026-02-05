@@ -8,12 +8,14 @@ import BeforeSpeedQuestion from "./before-speed-question";
 export default function Admin() {
   const { phase } = useGamePhases();
   return (
-    <AnimatePresence mode="wait">
-      {phase === "welcome" && <Welcome />}
-      {phase === "beforeSpeedQuestion" && <BeforeSpeedQuestion />}
-      {phase === "startSpeedQuestion" && (
-        <p className="text-white text-center">startSpeedQuestion</p>
-      )}
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        {phase === "welcome" && <Welcome />}
+        {phase === "beforeSpeedQuestion" && <BeforeSpeedQuestion />}
+        {phase === "startSpeedQuestion" && (
+          <p className="text-white text-center">startSpeedQuestion</p>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
