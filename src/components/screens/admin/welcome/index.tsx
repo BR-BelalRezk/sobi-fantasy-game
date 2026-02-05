@@ -37,7 +37,7 @@ export default function Welcome() {
           <GameButton
             text="Start"
             onClick={() => setPhase("beforeSpeedQuestion")}
-            className="absolute bottom-10 w-full flex flex-col items-center gap-4"
+            className="absolute bottom-10 flex flex-col items-center gap-4"
           />
         )}
       </AnimatePresence>
