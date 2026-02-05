@@ -11,12 +11,13 @@ export default function IntroSequence({
   children: React.ReactNode;
 }) {
   const { phase } = useGamePhases();
+  const showChildren = phase !== "initialize" && phase !== "start experience";
 
   return (
     <AnimatePresence mode="wait">
       {phase === "initialize" && <Initialize />}
       {phase === "start experience" && <StartExperience />}
-      {phase !== "initialize" && phase !== "start experience" && (
+      {showChildren && (
         <motion.div
           key="children-phase"
           initial={{ opacity: 0, scale: 0.98, filter: "blur(16px)" }}

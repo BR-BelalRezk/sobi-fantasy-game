@@ -1,5 +1,5 @@
-import React from "react";
+import Admin from "@/components/screens/admin";
 
-export default function Admin() {
-  return <div>Admin</div>;
+export default function AdminPage() {
+  return <Admin />;
 }
