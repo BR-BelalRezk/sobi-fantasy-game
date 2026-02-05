@@ -11,6 +11,9 @@ export default function Admin() {
     <AnimatePresence mode="wait">
       {phase === "welcome" && <Welcome />}
       {phase === "beforeSpeedQuestion" && <BeforeSpeedQuestion />}
+      {phase === "startSpeedQuestion" && (
+        <p className="text-white text-center">startSpeedQuestion</p>
+      )}
     </AnimatePresence>
   );
 }
