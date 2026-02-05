@@ -18,7 +18,7 @@ export default function IntroSequence({
       {phase === "start experience" && (
         <StartExperience key="start-experience" />
       )}
-      {phase !== "initialize" && phase !== "start experience" && children}
+      {children}
     </AnimatePresence>
   );
 }

@@ -11,7 +11,6 @@ export default function BeforeSpeedQuestion() {
 
   return (
     <motion.section
-      key="before-speed-question"
       className="w-full h-screen bg-black relative flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -20,12 +19,10 @@ export default function BeforeSpeedQuestion() {
     >
       {/* Fullscreen video */}
       <motion.video
-        key="before-speed-video"
         src="/videos/startSpeedQuestions.mp4"
         className="w-full h-full object-cover"
         autoPlay
         playsInline
-        muted
         preload="auto"
         initial={{ opacity: 0, scale: 1.05, filter: "blur(16px)" }}
         animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
