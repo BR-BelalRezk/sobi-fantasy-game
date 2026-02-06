@@ -1,5 +1,10 @@
 import GamePhases from "./game-phases";
+import WebSocketConnection from "./websocket";
 
 export default function Contexts({ children }: { children: React.ReactNode }) {
-  return <GamePhases>{children}</GamePhases>;
+  return (
+    <WebSocketConnection>
+      <GamePhases>{children}</GamePhases>
+    </WebSocketConnection>
+  );
 }

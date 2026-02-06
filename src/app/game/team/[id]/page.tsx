@@ -5,5 +5,6 @@ export default async function TeamID({
 }) {
   const { id } = await params;
   const teamID = id;
+  console.log(teamID);
   return <section></section>;
 }
