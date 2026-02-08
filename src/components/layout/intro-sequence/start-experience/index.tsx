@@ -94,7 +94,7 @@ export default function StartExperience() {
         )}
 
         {/* STEP 3 — INTRO VIDEO */}
-        {step === 3 && (
+        {/* {step === 3 && (
           <motion.div
             key="intro-video"
             variants={mediaVariants}
@@ -117,7 +117,7 @@ export default function StartExperience() {
               onEnded={() => setPhase("welcome")}
             />
           </motion.div>
-        )}
+        )} */}
       </AnimatePresence>
     </motion.section>
   );

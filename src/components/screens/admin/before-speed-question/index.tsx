@@ -33,7 +33,7 @@ export default function BeforeSpeedQuestion() {
 
       {/* Button + text appear after video */}
       <AnimatePresence mode="wait">
-        {videoEnded && (
+        {/* {videoEnded && ( */}
           <motion.div
             key="before-speed-ui"
             className="absolute bottom-16 w-full flex flex-col items-center gap-4"
@@ -57,7 +57,7 @@ export default function BeforeSpeedQuestion() {
               Get ready for the Speed Question
             </motion.p>
           </motion.div>
-        )}
+        {/* )} */}
       </AnimatePresence>
     </motion.section>
   );
