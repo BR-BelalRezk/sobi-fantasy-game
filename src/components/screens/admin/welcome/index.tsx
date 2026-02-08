@@ -33,7 +33,7 @@ export default function Welcome() {
 
       {/* Button appears after video */}
       <AnimatePresence mode="wait">
-        {videoEnded && (
+        {/* {videoEnded && ( */}
           <motion.div
             key="welcome-button"
             className="absolute bottom-16 w-full flex justify-center"
@@ -47,7 +47,7 @@ export default function Welcome() {
               onClick={() => setPhase("beforeSpeedQuestion")}
             />
           </motion.div>
-        )}
+        {/* )} */}
       </AnimatePresence>
     </motion.section>
   );
